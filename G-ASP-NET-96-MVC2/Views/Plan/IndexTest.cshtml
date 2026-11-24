@@ -1,0 +1,70 @@
+﻿@using G_ASP_NET_96_MVC2.Entites
+
+@{
+    // 1] C# code block
+    string pageTitle = "Route academy";
+    int age = 22;
+    List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
+
+    /*
+     * Multiple
+     * Line
+     * Comment
+     */
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@pageTitle</title>
+</head>
+<body>
+    <h1>Welcome to Abdo Page</h1>
+    <h2>@pageTitle</h2>
+
+    <p>Age: @age</p>
+
+    <p>@age + 1</p>
+    <!-- 22 + 1 -->
+
+    <p>@(age + 1)</p>
+    <!-- 23 -->
+    @if (age >= 18)
+    {
+        <p>You are an adult</p>
+    }
+    else
+    {
+        <p>You are under 18</p>
+    }
+
+    <ul>
+        @foreach (int n in numbers)
+        {
+            <li>Number: @n</li>
+        }
+    </ul>
+
+    @* <a href="/Home/Index">Home</a> *@
+
+    <!-- Generate href="/Home/Index" -->
+    <a asp-controller="Home" asp-action="Index">Home</a>
+
+    <!-- Generate href="/Products/Details/5" -->
+    <a asp-controller="Products"
+       asp-action="Details"
+       asp-route-id="5">Product 5</a>
+
+    <environment include="Development">
+        <p>Running in development</p>
+    </environment>
+
+    <environment exclude="Development">
+        <p>Running in production</p>
+    </environment>
+
+    <!-- This is HTML Comment -->
+    @* This comment will not display in page source *@
+
+</body>
+</html>

@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using G_ASP_NET_96_MVC2.Contexts;
+
 namespace G_ASP_NET_96_MVC2
 {
     public class Program
@@ -5,6 +8,11 @@ namespace G_ASP_NET_96_MVC2
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<GymDbContext>(options =>
+            options.UseSqlServer(
+            builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
